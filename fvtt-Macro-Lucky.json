@@ -1,0 +1,25 @@
+{
+  "_id": "qFZ3xfklNv5J68sP",
+  "name": "Lucky",
+  "type": "script",
+  "sort": 150001,
+  "flags": {
+    "combat-utility-belt": {
+      "macroTrigger": ""
+    },
+    "furnace": {
+      "runAsGM": false
+    },
+    "exportSource": {
+      "world": "duet",
+      "system": "dnd5e",
+      "coreVersion": "0.6.6",
+      "systemVersion": 0.97
+    }
+  },
+  "scope": "global",
+  "command": "new Roll(`1d20`).roll().toMessage({flavor: \"You got Lucky\", speaker})",
+  "author": "JXSey3CeaPXVMtVq",
+  "img": "modules/plutonium/media/icon/feat/phb-lucky.jpg",
+  "actorIds": []
+}

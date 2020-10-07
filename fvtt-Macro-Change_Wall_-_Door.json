@@ -1,0 +1,25 @@
+{
+  "_id": "6UP1CYTguKsChFgV",
+  "name": "Change Wall - Door",
+  "type": "script",
+  "sort": 700000,
+  "flags": {
+    "combat-utility-belt": {
+      "macroTrigger": ""
+    },
+    "furnace": {
+      "runAsGM": false
+    },
+    "exportSource": {
+      "world": "duet",
+      "system": "dnd5e",
+      "coreVersion": "0.6.6",
+      "systemVersion": 0.97
+    }
+  },
+  "scope": "global",
+  "command": "function wallUpdate(data) {\r\n  canvas.walls.controlled.map(wall => wall.update(data));\r\n}\r\n\r\nwallUpdate({\"move\": CONST.WALL_MOVEMENT_TYPES.NORMAL});\r\nwallUpdate({\"sense\": CONST.WALL_SENSE_TYPES.NORMAL});\r\nwallUpdate({\"door\": CONST.WALL_DOOR_TYPES.DOOR});",
+  "author": "JXSey3CeaPXVMtVq",
+  "img": "icons/svg/door-exit.svg",
+  "actorIds": []
+}

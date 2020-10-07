@@ -1,0 +1,25 @@
+{
+  "_id": "ow4srPIVgtJN9pzp",
+  "name": "MageArmor",
+  "type": "script",
+  "sort": 1000000,
+  "flags": {
+    "combat-utility-belt": {
+      "macroTrigger": ""
+    },
+    "furnace": {
+      "runAsGM": true
+    },
+    "exportSource": {
+      "world": "duet",
+      "system": "dnd5e",
+      "coreVersion": "0.6.6",
+      "systemVersion": 0.97
+    }
+  },
+  "scope": "global",
+  "command": "let targets = Array.from(game.user.targets)\r\nif (targets.length == 0 || targets.length > 1 ) {\r\n    ui.notifications.error(\"Please target one token\"); // make sure only one target is selected for this spell.\r\n    return;\r\n    }\r\nlet targetActor = targets[0].actor;\r\nlet armor = targetActor.items.find(item => (item.data.data.armor?.type == \"heavy\" || item.data.data.armor?.type == \"medium\" || item.data.data.armor?.type == \"light\") && item.data.toggleTitle == \"Equipped\");\r\nlet unarmedDefense = targetActor.items.find(item => item.name == \"Monk\" || item.name == \"Barbarian\");\r\nif (!armor && !unarmedDefense){\r\n    targetActor.data.data.attributes.ac.value = 13 + targetActor.data.data.abilities.dex.mod; // do the spell thing.\r\nui.notifications.info(\"Success!!\")\r\n} \r\nelse {\r\n    ui.notifications.info(\"Target is wearing armor or has unarmed defense.\")\r\n    return;\r\n}",
+  "author": "JXSey3CeaPXVMtVq",
+  "img": "modules/plutonium/media/icon/spell/phb-mage-armor.jpg",
+  "actorIds": []
+}

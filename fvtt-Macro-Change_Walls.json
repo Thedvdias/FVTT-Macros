@@ -1,0 +1,25 @@
+{
+  "_id": "BUH5GDGezNlxQoiG",
+  "name": "Change Walls",
+  "type": "script",
+  "sort": 400001,
+  "flags": {
+    "combat-utility-belt": {
+      "macroTrigger": ""
+    },
+    "furnace": {
+      "runAsGM": false
+    },
+    "exportSource": {
+      "world": "duet",
+      "system": "dnd5e",
+      "coreVersion": "0.6.6",
+      "systemVersion": 0.97
+    }
+  },
+  "scope": "global",
+  "command": "function wallUpdate(data) {\r\n  canvas.walls.controlled.map(wall => wall.update(data));\r\n}\r\n\r\nlet dialogEditor = new Dialog({\r\n  title: `Wall Type Picker`,\r\n  content: `Pick the type of wall to change the selected wall to.`,\r\n  buttons: {\r\n    blockMove: {\r\n      label: `Regular Wall`,\r\n      callback: () => {\r\n        wallUpdate({\"move\": CONST.WALL_MOVEMENT_TYPES.NORMAL});\r\n\t\twallUpdate({\"sense\": CONST.WALL_SENSE_TYPES.NORMAL});\r\n\t\twallUpdate({\"door\": CONST.WALL_DOOR_TYPES.NONE});\r\n        dialogEditor.render(true);\r\n      }\r\n    },\r\n    allowMove: {\r\n      label: `Terrain Wall`,\r\n      callback: () => {\r\n        wallUpdate({\"move\": CONST.WALL_MOVEMENT_TYPES.NORMAL});\r\n\t\twallUpdate({\"sense\": CONST.WALL_SENSE_TYPES.LIMITED});\r\n\t\twallUpdate({\"door\": CONST.WALL_DOOR_TYPES.NONE});\r\n        dialogEditor.render(true);\r\n      }\r\n    },\r\n    blockPer: {\r\n      label: `Invisible Wall`,\r\n      callback: () => {\r\n        wallUpdate({\"move\": CONST.WALL_MOVEMENT_TYPES.NORMAL});\r\n\t\twallUpdate({\"sense\": CONST.WALL_SENSE_TYPES.NONE});\r\n\t\twallUpdate({\"door\": CONST.WALL_DOOR_TYPES.NONE});\r\n        dialogEditor.render(true);\r\n      }\r\n    },\r\n    limitPer: {\r\n      label: `Ethereal Wall`,\r\n      callback: () => {\r\n        wallUpdate({\"move\": CONST.WALL_MOVEMENT_TYPES.NONE});\r\n\t\twallUpdate({\"sense\": CONST.WALL_SENSE_TYPES.NORMAL});\r\n\t\twallUpdate({\"door\": CONST.WALL_DOOR_TYPES.NONE});\r\n        dialogEditor.render(true);\r\n      }\r\n    },\r\n    allowPer: {\r\n      label: `Door`,\r\n      callback: () => {\r\n        wallUpdate({\"move\": CONST.WALL_MOVEMENT_TYPES.NORMAL});\r\n\t\twallUpdate({\"sense\": CONST.WALL_SENSE_TYPES.NORMAL});\r\n\t\twallUpdate({\"door\": CONST.WALL_DOOR_TYPES.DOOR});\r\n        dialogEditor.render(true);\r\n      }\r\n    },\r\n    isDoor: {\r\n      label: `Secret Door`,\r\n      callback: () => {\r\n        wallUpdate({\"move\": CONST.WALL_MOVEMENT_TYPES.NORMAL});\r\n\t\twallUpdate({\"sense\": CONST.WALL_SENSE_TYPES.NORMAL});\r\n\t\twallUpdate({\"door\": CONST.WALL_DOOR_TYPES.SECRET});\r\n        dialogEditor.render(true);\r\n      }\r\n    },\r\n    close: {\r\n      icon: \"<i class='fas fa-tick'></i>\",\r\n      label: `Close`\r\n    },\r\n  },\r\n  default: \"close\",\r\n  close: () => {}\r\n});\r\n\r\ndialogEditor.render(true)",
+  "author": "JXSey3CeaPXVMtVq",
+  "img": "icons/svg/temple.svg",
+  "actorIds": []
+}

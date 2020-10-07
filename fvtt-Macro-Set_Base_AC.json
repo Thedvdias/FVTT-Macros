@@ -1,0 +1,25 @@
+{
+  "_id": "kEGXIowzsBOyKNUB",
+  "name": "Set Base AC",
+  "type": "script",
+  "sort": 300000,
+  "flags": {
+    "combat-utility-belt": {
+      "macroTrigger": ""
+    },
+    "furnace": {
+      "runAsGM": false
+    },
+    "exportSource": {
+      "world": "duet",
+      "system": "dnd5e",
+      "coreVersion": "0.6.6",
+      "systemVersion": 0.97
+    }
+  },
+  "scope": "global",
+  "command": "let targets = Array.from(game.user.targets)\r\nlet targetActor = targets[0].actor;\r\ntargetActor.data.data.attributes.ac.value = 10 + targetActor.data.data.abilities.dex.mod;\r\nui.notifications.info(\"Success!\")",
+  "author": "JXSey3CeaPXVMtVq",
+  "img": "worlds/duet/data/custom/shoulder-armor.svg",
+  "actorIds": []
+}

@@ -1,0 +1,25 @@
+{
+  "_id": "ih3gGd4u3mIe0GwV",
+  "name": "Remove All Effects",
+  "type": "script",
+  "sort": 100001,
+  "flags": {
+    "combat-utility-belt": {
+      "macroTrigger": ""
+    },
+    "furnace": {
+      "runAsGM": true
+    },
+    "exportSource": {
+      "world": "duet",
+      "system": "dnd5e",
+      "coreVersion": "0.6.6",
+      "systemVersion": 0.97
+    }
+  },
+  "scope": "global",
+  "command": "DynamicEffects.removeAllActiveffects()\r\n",
+  "author": "JXSey3CeaPXVMtVq",
+  "img": "worlds/duet/data/custom/large-paint-brush.svg",
+  "actorIds": []
+}

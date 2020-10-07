@@ -1,0 +1,25 @@
+{
+  "_id": "yZD1T3mW05saTByG",
+  "name": "Divine Smite",
+  "type": "script",
+  "sort": 1050000,
+  "flags": {
+    "combat-utility-belt": {
+      "macroTrigger": ""
+    },
+    "furnace": {
+      "runAsGM": false
+    },
+    "exportSource": {
+      "world": "duet",
+      "system": "dnd5e",
+      "coreVersion": "0.6.6",
+      "systemVersion": 0.97
+    }
+  },
+  "scope": "global",
+  "command": "if (args[0] === \"on\") {\r\n  let target = canvas.tokens.get(args[1])\r\n  let numDice = 1 + (Number(args[2]) || 1)\r\n  let undead = [\"undead\", \"fiend\"].some(type => (target.actor.data.data.details.type || \"\").toLowerCase().includes(type));\r\n  if (undead) numDice += 1;\r\n  let damageRoll = new Roll(`${numDice}d8`).roll();\r\n  new MidiQOL.DamageOnlyWorkflow(actor, token, damageRoll.total, \"radiant\", [target], damageRoll, {flavor: \"Divine Smite - Damage Roll (Radiant)\", itemData: args[3]})\r\n}\r\n",
+  "author": "JXSey3CeaPXVMtVq",
+  "img": "systems/dnd5e/icons/skills/light_05.jpg",
+  "actorIds": []
+}

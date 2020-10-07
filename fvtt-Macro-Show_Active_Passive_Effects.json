@@ -1,0 +1,25 @@
+{
+  "_id": "F7kmG5tsipWh6tb9",
+  "name": "Show Active/Passive Effects",
+  "type": "script",
+  "sort": 200001,
+  "flags": {
+    "combat-utility-belt": {
+      "macroTrigger": ""
+    },
+    "furnace": {
+      "runAsGM": false
+    },
+    "exportSource": {
+      "world": "duet",
+      "system": "dnd5e",
+      "coreVersion": "0.6.6",
+      "systemVersion": 0.97
+    }
+  },
+  "scope": "global",
+  "command": "for ( let token of canvas.tokens.controlled ){\r\nDynamicEffects.effects(event.shiftKey, {token, activeOnly: false});\r\n}",
+  "author": "JXSey3CeaPXVMtVq",
+  "img": "icons/svg/aura.svg",
+  "actorIds": []
+}

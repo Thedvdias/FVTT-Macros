@@ -1,0 +1,25 @@
+{
+  "_id": "4R1863F3HpBsRidJ",
+  "name": "Change Wall - Regular Wall",
+  "type": "script",
+  "sort": 500000,
+  "flags": {
+    "combat-utility-belt": {
+      "macroTrigger": ""
+    },
+    "furnace": {
+      "runAsGM": false
+    },
+    "exportSource": {
+      "world": "duet",
+      "system": "dnd5e",
+      "coreVersion": "0.6.6",
+      "systemVersion": 0.97
+    }
+  },
+  "scope": "global",
+  "command": "function wallUpdate(data) {\r\n  canvas.walls.controlled.map(wall => wall.update(data));\r\n}\r\n\r\nwallUpdate({\"move\": CONST.WALL_MOVEMENT_TYPES.NORMAL});\r\nwallUpdate({\"sense\": CONST.WALL_SENSE_TYPES.NORMAL});\r\nwallUpdate({\"door\": CONST.WALL_DOOR_TYPES.NONE});",
+  "author": "JXSey3CeaPXVMtVq",
+  "img": "worlds/duet/data/custom/hamburger-menu.svg",
+  "actorIds": []
+}
