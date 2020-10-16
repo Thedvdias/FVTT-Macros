@@ -2,7 +2,7 @@
   "_id": "XCLyKG010sRin5Gs",
   "name": "Hunter's Mark",
   "type": "script",
-  "sort": 100001,
+  "sort": 100000,
   "flags": {
     "combat-utility-belt": {
       "macroTrigger": ""
@@ -18,7 +18,7 @@
     }
   },
   "scope": "global",
-  "command": "let target = canvas.tokens.get(args[1])\r\nlet eff = target.data.effects;\r\nif (!eff.includes(\"worlds/duet/data/custom/bullseye.svg\")){\r\neff.push(\"worlds/duet/data/custom/bullseye.svg\")\r\n}\r\ngame.scenes.get(args[2]).updateEmbeddedEntity(\"Token\", {\"_id\": args[1], \"effects\":eff})",
+  "command": "let targets = Array.from(game.user.targets)\r\nlet target = targets[0];\r\nlet eff = target.data.effects;\r\nif (!eff.includes(\"worlds/duet/data/custom/bullseye.svg\")){\r\neff.push(\"worlds/duet/data/custom/bullseye.svg\")\r\n}\r\ngame.scenes.get(args[2]).updateEmbeddedEntity(\"Token\", {\"_id\": args[1], \"effects\":eff})",
   "author": "JXSey3CeaPXVMtVq",
   "img": "worlds/duet/data/custom/bullseye.svg",
   "actorIds": []

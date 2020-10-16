@@ -2,7 +2,7 @@
   "_id": "a5bNgNslR4yO35Dd",
   "name": "Hunter's Mark Damage",
   "type": "script",
-  "sort": 100001,
+  "sort": 200000,
   "flags": {
     "combat-utility-belt": {
       "macroTrigger": ""
@@ -18,7 +18,7 @@
     }
   },
   "scope": "global",
-  "command": "setTimeout(function () {\r\nlet target = canvas.tokens.get(args[1])\r\nlet eff = target.data.effects;\r\nif (eff.includes(\"worlds/duet/data/custom/bullseye.svg\")){\r\nlet damageRoll = new Roll(`1d6`).roll()\r\nnew MidiQOL.DamageOnlyWorkflow(actor, token, damageRoll.total, \"piercing\", [target], damageRoll, {flavor: \"Hunter's Mark Damage Roll (Piercing)\"})\r\n}\r\n}, 100)",
+  "command": "setTimeout(function () {\r\nlet targets = Array.from(game.user.targets)\r\nlet target = targets[0];\r\nlet eff = target.data.effects;\r\nif (eff.includes(\"worlds/duet/data/custom/bullseye.svg\")){\r\nlet damageRoll = new Roll(`1d6`).roll()\r\nnew MidiQOL.DamageOnlyWorkflow(actor, token, damageRoll.total, \"piercing\", [target], damageRoll, {flavor: \"Hunter's Mark Damage Roll (Piercing)\"})\r\n}\r\n}, 100)",
   "author": "JXSey3CeaPXVMtVq",
   "img": "modules/plutonium/media/icon/spell/phb-hunters-mark.jpg",
   "actorIds": []
