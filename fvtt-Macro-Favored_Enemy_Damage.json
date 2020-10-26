@@ -1,0 +1,25 @@
+{
+  "_id": "iQNEtWYYsaMifxMT",
+  "name": "Favored Enemy Damage",
+  "type": "script",
+  "sort": 100000,
+  "flags": {
+    "combat-utility-belt": {
+      "macroTrigger": ""
+    },
+    "furnace": {
+      "runAsGM": true
+    },
+    "exportSource": {
+      "world": "duet",
+      "system": "dnd5e",
+      "coreVersion": "0.7.5",
+      "systemVersion": 0.98
+    }
+  },
+  "scope": "global",
+  "command": "setTimeout(function () {\nif (args[0] !== \"on\") return;\nlet targets = Array.from(game.user.targets)\nlet target = targets[0];\nlet pc = target.actor.data.type.includes(\"character\") \nlet humanoid = target.actor.data.data.details.type.includes(\"humanoid\")\nif (pc || humanoid){\nlet damageRoll = new Roll(`2`).roll()\nnew MidiQOL.DamageOnlyWorkflow(actor, token, damageRoll.total, \"piercing\", [target], damageRoll, {flavor: \"Favored Enemy Damage (Piercing)\"})\n}\n}, 150)",
+  "author": "JXSey3CeaPXVMtVq",
+  "img": "systems/dnd5e/icons/skills/violet_22.jpg",
+  "actorIds": []
+}
