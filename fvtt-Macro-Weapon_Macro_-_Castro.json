@@ -1,0 +1,25 @@
+{
+  "_id": "IqGxggubwjfaoEFm",
+  "name": "Weapon Macro - Castro",
+  "type": "script",
+  "sort": 100001,
+  "flags": {
+    "combat-utility-belt": {
+      "macroTrigger": ""
+    },
+    "furnace": {
+      "runAsGM": false
+    },
+    "exportSource": {
+      "world": "duet",
+      "system": "dnd5e",
+      "coreVersion": "0.7.7",
+      "systemVersion": "1.1.1"
+    }
+  },
+  "scope": "global",
+  "command": "game.macros.getName(\"Hunter's Mark Damage\").execute(args[0])\ngame.macros.getName(\"Favored Enemy Damage\").execute(args[0])",
+  "author": "JXSey3CeaPXVMtVq",
+  "img": "icons/svg/combat.svg",
+  "actorIds": []
+}

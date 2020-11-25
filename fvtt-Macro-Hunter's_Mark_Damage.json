@@ -8,17 +8,17 @@
       "macroTrigger": ""
     },
     "furnace": {
-      "runAsGM": false
+      "runAsGM": true
     },
     "exportSource": {
       "world": "duet",
       "system": "dnd5e",
-      "coreVersion": "0.7.5",
-      "systemVersion": 0.98
+      "coreVersion": "0.7.7",
+      "systemVersion": "1.1.1"
     }
   },
   "scope": "global",
-  "command": "setTimeout(function () {\nif (args[0] !== \"on\") return;\nlet targets = Array.from(game.user.targets)\nlet target = targets[0];\nlet eff = target.actor.effects.find(a => a.data.label === \"Marked\");\nif (eff){\nlet damageRoll = new Roll(`1d6`).roll()\nnew MidiQOL.DamageOnlyWorkflow(actor, token, damageRoll.total, \"piercing\", [target], damageRoll, {flavor: \"Hunter's Mark Damage Roll (Piercing)\"})\n}}, 100)",
+  "command": "setTimeout(function () {\nif(args[0].hitTargets.length === 0) return;\nlet targetId = args[0].hitTargets[0]._id;\nlet target = canvas.tokens.get(targetId);\nlet eff = target.actor.effects.find(a => a.data.label === \"Marked\");\nlet crit = args[0].isCritical;\nif (eff){\n  let numDice = 1;\n  if (crit){numDice=2}\n  let damageRoll = new Roll(`${numDice}d6`).roll()\n  new MidiQOL.DamageOnlyWorkflow(actor, token, damageRoll.total, \"piercing\", [target], damageRoll, {flavor: \"Hunter's Mark Damage Roll (Piercing)\"})\n        }\n}, 100)",
   "author": "JXSey3CeaPXVMtVq",
   "img": "modules/plutonium/media/icon/spell/phb-hunters-mark.jpg",
   "actorIds": []

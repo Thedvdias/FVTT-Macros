@@ -1,25 +1,25 @@
 {
+  "_id": "sNxF3JhNHhL7agRE",
   "name": "Lay on Hands",
   "type": "script",
-  "sort": 400001,
+  "sort": 500000,
   "flags": {
     "combat-utility-belt": {
       "macroTrigger": ""
     },
     "furnace": {
-      "runAsGM": false
+      "runAsGM": true
     },
     "exportSource": {
       "world": "duet",
       "system": "dnd5e",
-      "coreVersion": "0.6.6",
-      "systemVersion": 0.97
+      "coreVersion": "0.7.7",
+      "systemVersion": "1.1.1"
     }
   },
   "scope": "global",
-  "command": "let lay = game.user.character.items.find(a => a.data.name === \"Lay on Hands\");\r\nlet charges_rem = item.data.data.uses.value;\r\n\r\nlet targets = Array.from(game.user.targets)\r\nlet target = targets[0];\r\n\r\nlet dialogEditor = new Dialog({\r\n  title: `Lay on Hands`,\r\n  content: `Choose how many charges to spend; <input type=\"number\" id=\"charges\" value=\"1\"> Remaining charges: ${charges_rem + 1}`,\r\n  buttons: {\r\n    blockMove: {\r\n      label: `Heal`,\r\n      callback: () => {\r\nlet charges = document.getElementById(\"charges\").value\r\nlet damageRoll = new Roll(`${charges}`).roll()\r\nnew MidiQOL.DamageOnlyWorkflow(actor, token, damageRoll.total, \"healing\", [target], damageRoll, {flavor: \"Lay on Hands Healing\"})\r\nlay.data.data.uses.value=charges_rem - (charges-1);\r\ngame.user.character.updateEmbeddedEntity(\"OwnedItem\", {\"_id\":lay._id, \"data\":lay.data})\r\n      }\r\n    } \r\n  }\r\n}\r\n);\r\n\r\ndialogEditor.render(true)",
+  "command": "let targetId = args[0].targets[0]._id;\nlet target = canvas.tokens.get(targetId);\nlet itemData = args[0].item;\nlet charges_rem = itemData.data.uses.value +1;\nlet dialogEditor = new Dialog({\n  title: `Lay on Hands`,\n  content: `Choose how many charges to spend; <input type=\"number\" id=\"charges\" value=\"1\"> Remaining charges: ${charges_rem}`,\n  buttons: {\n    blockMove: {\n      label: `Heal`,\n      callback: () => {\nlet charges = document.getElementById(\"charges\").value\ngame.actors.getName(args[0].actor.name).updateEmbeddedEntity(\"OwnedItem\",{\"_id\":itemData._id, \"data.uses.value\": charges_rem - charges})\nlet damageRoll = new Roll(`${charges}`).roll()\nnew MidiQOL.DamageOnlyWorkflow(actor, token, damageRoll.total, \"healing\", [target], damageRoll, {flavor: \"Lay on Hands Healing\", itemCardId: args[0].itemCardId})\n      }\n    } \n  }\n}\n);\n\ndialogEditor.render(true)",
   "author": "JXSey3CeaPXVMtVq",
   "img": "systems/dnd5e/icons/skills/light_10.jpg",
-  "actorIds": [],
-  "_id": "sNxF3JhNHhL7agRE"
+  "actorIds": []
 }

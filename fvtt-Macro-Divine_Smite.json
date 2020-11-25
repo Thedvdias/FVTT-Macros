@@ -1,5 +1,5 @@
 {
-  "_id": "yZD1T3mW05saTByG",
+  "_id": "z7ABP7LdC4detELm",
   "name": "Divine Smite",
   "type": "script",
   "sort": 1050000,
@@ -13,12 +13,12 @@
     "exportSource": {
       "world": "duet",
       "system": "dnd5e",
-      "coreVersion": "0.6.6",
-      "systemVersion": 0.97
+      "coreVersion": "0.7.7",
+      "systemVersion": "1.1.1"
     }
   },
   "scope": "global",
-  "command": "if (args[0] === \"on\") {\r\n  let target = canvas.tokens.get(args[1])\r\n  let numDice = 1 + (Number(args[2]) || 1)\r\n  let undead = [\"undead\", \"fiend\"].some(type => (target.actor.data.data.details.type || \"\").toLowerCase().includes(type));\r\n  if (undead) numDice += 1;\r\n  let damageRoll = new Roll(`${numDice}d8`).roll();\r\n  new MidiQOL.DamageOnlyWorkflow(actor, token, damageRoll.total, \"radiant\", [target], damageRoll, {flavor: \"Divine Smite - Damage Roll (Radiant)\", itemData: args[3]})\r\n}\r\n",
+  "command": "if(args[0].targets.length === 0) return;\nlet targetId = args[0].targets[0]._id;\nlet target = canvas.tokens.get(targetId);\nlet numDice = 1 + (Number(args[0].spellLevel) || 1)\nlet undead = [\"undead\", \"fiend\"].some(type => (target.actor.data.data.details.type || \"\").toLowerCase().includes(type));\nif (undead) numDice += 1;\nlet dialogEditor = new Dialog({\n    title: `Divine Smite`,\n    content: `Did you Crit? <input type=\"checkbox\" id=\"crit\">`,\n    buttons: {\n      blockMove: {\n        label: `Roll Damage`,\n        callback: () => {\n if (crit.checked) numDice=numDice*2;\n  let damageRoll = new Roll(`${numDice}d8`).roll();\n  new MidiQOL.DamageOnlyWorkflow(actor, token, damageRoll.total, \"radiant\", [target], damageRoll, {flavor: \"Divine Smite - Damage Roll (Radiant)\", itemData: args[3]})\n}}}})\n\ndialogEditor.render(true)",
   "author": "JXSey3CeaPXVMtVq",
   "img": "systems/dnd5e/icons/skills/light_05.jpg",
   "actorIds": []
